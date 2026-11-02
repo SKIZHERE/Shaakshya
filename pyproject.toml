@@ -1,0 +1,13 @@
+[project]
+name = "saakshya-ai-starter"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi",
+    "openai",
+    "python-dotenv",
+    "pydantic",
+]
+
+[tool.vercel]
+entrypoint = "backend.main:app"

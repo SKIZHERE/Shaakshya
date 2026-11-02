@@ -1,0 +1,4 @@
+1) Read README_FIRST.txt completely.
+2) Add your API key only to backend/.env (never send it in chat or put it in frontend code).
+3) Use synthetic test messages only.
+4) This is a development starter, not a secure victim-facing production system.

@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0d1713">
-<title>Saakshya 2.0 — Private Evidence Workspace</title>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0d1713"><meta name="description" content="Saakshya — a privacy-led workspace for organising digital evidence and preparing incident documentation."><meta name="color-scheme" content="dark light">
+<title>Saakshya — Private Evidence Workspace</title>
 <style>
 :root{--bg:#0c1511;--surface:#121f19;--surface2:#192a21;--line:#2a4034;--text:#eef6f0;--muted:#a1b3a7;--mint:#54d6ad;--mint2:#143f31;--purple:#a99cff;--amber:#f0c878;--red:#ff8989;--shadow:0 18px 55px #0004}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 75% -20%,#1d4635 0,transparent 45%),var(--bg);color:var(--text);font:14px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}button,input,textarea,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:2px solid var(--mint);outline-offset:2px}
@@ -10,11 +10,107 @@
 @media(max-width:900px){.sidebar{width:215px}.main{margin-left:215px}.cols3{grid-template-columns:1fr 1fr}.cols2{grid-template-columns:1fr}}
 @media(max-width:650px){.sidebar{width:100%;height:auto;inset:0 0 auto;padding:10px 12px;border-right:0;border-bottom:1px solid var(--line);flex-direction:row;align-items:center;justify-content:space-between}.brand{padding:0}.brand small,.nav-label,.privacy-mini{display:none}.logo{width:34px;height:34px}.nav{display:flex;gap:3px}.nav button{padding:8px;font-size:0}.nav button .ico{font-size:16px}.side-bottom{display:none}.main{margin:59px 0 0;padding:16px 12px 40px}.topbar{margin-bottom:18px}.status{display:none}.hero{padding:20px}.hero-mark{display:none}.cols3{grid-template-columns:1fr 1fr}.quick{grid-template-columns:1fr 1fr}.row{grid-template-columns:1fr}.heading{align-items:flex-start;flex-direction:column}.card{padding:15px}}
 @media print{body{background:#fff;color:#111}.sidebar,.topbar,.no-print,.footer{display:none!important}.main{margin:0;padding:0}.page{display:none!important}#report.page{display:block!important}.card{background:#fff;color:#111;box-shadow:none;border:0}.muted{color:#444}.printonly{display:block}.hash{color:#111}a{color:#111}}
+
+/* Saakshya visual refresh: theme system, identity and authentication preview */
+.logo{color:#06291e;box-shadow:0 8px 24px #31c99a33}.logo svg{width:27px;height:27px;display:block}
+.theme-select-wrap{display:flex;align-items:center;gap:7px;color:var(--muted);font-size:10px;font-weight:700;white-space:nowrap}
+.theme-select{border:1px solid var(--line);border-radius:9px;padding:7px 27px 7px 9px;background:var(--surface2);color:var(--text);font-size:11px;max-width:118px}
+.auth-gate{min-height:100vh;padding:24px clamp(18px,5vw,76px) 18px;background:radial-gradient(ellipse at 17% 15%,#1a4937 0,transparent 38%),radial-gradient(ellipse at 85% 90%,#24304a 0,transparent 35%),var(--bg);display:flex;flex-direction:column;position:relative;overflow:hidden}
+.auth-theme-row{width:min(1180px,100%);margin:0 auto 26px;display:flex;align-items:center;justify-content:space-between}
+.auth-brand-mini{display:flex;align-items:center;gap:10px;font-size:19px;font-weight:850;letter-spacing:-.4px}
+.mini-mark{width:34px;height:34px;border-radius:11px;display:grid;place-items:center;color:#72e5c0;background:linear-gradient(145deg,#1b4938,#10251d);border:1px solid #39785d}.mini-mark svg{width:23px;height:23px}
+.auth-layout{width:min(1180px,100%);margin:auto;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(360px,.78fr);gap:clamp(35px,8vw,110px);align-items:center;padding:22px 0 44px}
+.auth-story{max-width:610px}.auth-kicker{display:inline-flex;align-items:center;gap:9px;color:#8ce8c7;font-size:10px;font-weight:850;letter-spacing:1.9px;margin-bottom:25px}
+.pulse-dot{width:7px;height:7px;border-radius:50%;background:#63dfb4;box-shadow:0 0 0 5px #63dfb41a}
+.auth-logo-large{width:66px;height:66px;display:grid;place-items:center;border-radius:21px;background:linear-gradient(145deg,#6ae4bf,#17664e);color:#06291e;box-shadow:0 16px 38px #24bd8a2b;margin-bottom:23px}.auth-logo-large svg{width:43px;height:43px}
+.auth-story h1{font-size:clamp(42px,5.5vw,70px);line-height:.99;letter-spacing:-3px;margin:0 0 21px;font-weight:800}.auth-story h1 em{font-style:normal;color:#73e2bc}.auth-lead{font-size:15px;line-height:1.75;color:#afc4b7;max-width:530px;margin:0 0 29px}
+.auth-feature-list{display:grid;gap:17px;max-width:475px}.auth-feature-list>div{display:flex;align-items:center;gap:14px}.auth-feature-list>div>span{width:34px;height:34px;display:grid;place-items:center;border:1px solid #315d49;border-radius:10px;color:#81e3bf;font-size:10px;font-weight:850;background:#12291e}.auth-feature-list b,.auth-feature-list small{display:block}.auth-feature-list b{font-size:12px}.auth-feature-list small{font-size:11px;color:#8fa69a;margin-top:2px}
+.auth-privacy{display:flex;align-items:center;gap:11px;border-top:1px solid #294235;margin-top:31px;padding-top:19px;color:#8ce8c7}.auth-privacy>span:first-child{font-size:24px}.auth-privacy b,.auth-privacy small{display:block}.auth-privacy b{font-size:11px;color:#dcebe1}.auth-privacy small{font-size:10px;color:#8fa69a;margin-top:2px}
+.auth-panel{background:linear-gradient(150deg,#182820f5,#111c17f7);border:1px solid #345342;border-radius:23px;padding:clamp(23px,3vw,36px);box-shadow:0 28px 90px #0006;backdrop-filter:blur(18px)}
+.auth-panel-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}.auth-panel-head h2{font-size:24px;letter-spacing:-.7px;margin:7px 0}.auth-panel-head p{font-size:11px;color:#9fb2a6;margin:0}.auth-secure-mark{width:35px;height:35px;border:1px solid #365744;border-radius:12px;display:grid;place-items:center;color:#79e0ba;background:#163324}
+.auth-tabs{display:grid;grid-template-columns:1fr 1fr;gap:5px;padding:4px;background:#0e1913;border:1px solid #293d31;border-radius:11px;margin:24px 0 19px}.auth-tab{border:0;border-radius:8px;padding:10px;background:transparent;color:#91a69a;font-weight:750;font-size:11px}.auth-tab.active{background:#244b38;color:#b9f3d9;box-shadow:0 2px 9px #0003}
+.auth-panel .field{margin:15px 0}.auth-panel .field label{font-size:11px;color:#cbd8cf}.auth-panel .field input{height:45px;background:#0d1712;border-color:#354b3e;border-radius:10px;padding:0 13px}.auth-label-row{display:flex;justify-content:space-between;align-items:center}.text-button{border:0;background:none;color:#81dcb8;font-size:10px;padding:0}.auth-submit{width:100%;height:46px;margin-top:8px;border-radius:10px;font-size:12px;background:linear-gradient(100deg,#70e4bd,#43c79c);box-shadow:0 9px 24px #36c79725}.auth-or{display:flex;align-items:center;gap:12px;justify-content:center;color:#6e8578;font-size:9px;font-weight:800;letter-spacing:1px;margin:19px 0}.auth-or span{height:1px;flex:1;background:#2a4034}.auth-demo{width:100%;height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 14px;border-radius:10px;background:#1c2d23!important;border-color:#3b5947!important;font-size:11px}.auth-demo span{font-size:17px;color:#82e2bd}.auth-demo-note{margin-top:16px;padding:11px 12px;background:#292519;border:1px solid #62512d;border-radius:10px;color:#e4d3a3;font-size:10px;line-height:1.6}.auth-demo-note b{color:#f2dfac}.auth-terms{font-size:9px;line-height:1.6;color:#73877b;text-align:center;margin:17px 0 0}.auth-footer{width:min(1180px,100%);margin:0 auto;display:flex;justify-content:space-between;gap:12px;color:#71877a;font-size:9px;border-top:1px solid #263b30;padding-top:14px}
+#workspaceApp{display:none}#workspaceApp.ready{display:block}
+[data-theme="midnight"]{--bg:#080d19;--surface:#111a2b;--surface2:#19243a;--line:#2d3b57;--text:#eef2ff;--muted:#9eabc6;--mint:#8ab4ff;--mint2:#172d50;--purple:#c2a5ff;--amber:#f6cd83;--red:#ff9caa}
+[data-theme="midnight"] body,[data-theme="midnight"] .auth-gate{background:radial-gradient(ellipse at 75% -15%,#1d3157 0,transparent 45%),var(--bg)}
+[data-theme="midnight"] .sidebar{background:#0d1423;border-color:#2d3b57}[data-theme="midnight"] .card{background:linear-gradient(155deg,#18243a,#101a2a)}[data-theme="midnight"] .hero{background:linear-gradient(110deg,#172d50,#1b2943 65%,#33274e)}[data-theme="midnight"] .nav button.active{background:#1b3155;color:#d4e5ff;border-color:#4a6fae}[data-theme="midnight"] .auth-panel{background:linear-gradient(150deg,#18243af5,#101a2af7);border-color:#34476a}[data-theme="midnight"] .auth-story h1 em{color:#9abfff}
+[data-theme="ocean"]{--bg:#07171d;--surface:#0e252d;--surface2:#15343e;--line:#28515a;--text:#e8f7fa;--muted:#9ab8bd;--mint:#63d7df;--mint2:#123b42;--purple:#a8c6ff;--amber:#f1ce86;--red:#ff9b9b}
+[data-theme="ocean"] body,[data-theme="ocean"] .auth-gate{background:radial-gradient(ellipse at 15% 10%,#124451 0,transparent 40%),var(--bg)}[data-theme="ocean"] .sidebar{background:#0b2027;border-color:#28515a}[data-theme="ocean"] .card{background:linear-gradient(155deg,#14313a,#0c2229)}[data-theme="ocean"] .hero{background:linear-gradient(110deg,#10414b,#15323c 65%,#233b55)}[data-theme="ocean"] .nav button.active{background:#16414a;color:#b6f6f6;border-color:#347985}[data-theme="ocean"] .auth-story h1 em{color:#75e5eb}[data-theme="ocean"] .auth-panel{background:linear-gradient(150deg,#14313af5,#0c2229f7);border-color:#32616b}
+[data-theme="violet"]{--bg:#151020;--surface:#21192e;--surface2:#30233f;--line:#4b3a60;--text:#f6efff;--muted:#b8a9c7;--mint:#d1a5ff;--mint2:#3b2453;--purple:#e3b6ff;--amber:#f4cf91;--red:#ff9eae}
+[data-theme="violet"] body,[data-theme="violet"] .auth-gate{background:radial-gradient(ellipse at 20% 8%,#45275a 0,transparent 42%),var(--bg)}[data-theme="violet"] .sidebar{background:#1b1427;border-color:#4b3a60}[data-theme="violet"] .card{background:linear-gradient(155deg,#2b2039,#1c1628)}[data-theme="violet"] .hero{background:linear-gradient(110deg,#482b5d,#2d2440 65%,#3b2a54)}[data-theme="violet"] .nav button.active{background:#422956;color:#f0d7ff;border-color:#8157a0}[data-theme="violet"] .auth-story h1 em{color:#dfb4ff}[data-theme="violet"] .auth-panel{background:linear-gradient(150deg,#2b2039f5,#1c1628f7);border-color:#58436e}
+[data-theme="light"]{--bg:#f3f6f5;--surface:#ffffff;--surface2:#edf3f0;--line:#d8e3dd;--text:#15251d;--muted:#617369;--mint:#087e5b;--mint2:#dff4eb;--purple:#7655b5;--amber:#946514;--red:#b83d4a;--shadow:0 14px 38px #183c2b12}
+[data-theme="light"] body{background:radial-gradient(ellipse at 75% -20%,#d9f1e6 0,transparent 45%),var(--bg);color:var(--text)}[data-theme="light"] .sidebar{background:#fff;border-color:var(--line)}[data-theme="light"] .brand small,[data-theme="light"] .nav button{color:#52675b}[data-theme="light"] .nav button:hover{background:#f0f6f2}[data-theme="light"] .nav button.active{background:#e2f4eb;color:#075b40;border-color:#a9d8c1}[data-theme="light"] .privacy-mini{background:#f1f8f4;border-color:#c9e4d4;color:#4e6558}[data-theme="light"] .privacy-mini b{color:#173b2a}[data-theme="light"] .card{background:#fff;border-color:#dce7e0}[data-theme="light"] .hero{background:linear-gradient(110deg,#dff4e9,#e9f2ed 65%,#eee9fa)}[data-theme="light"] .hero p{color:#52685c}[data-theme="light"] .btn.secondary{background:#edf4ef;color:#233b2e;border-color:#d0ded5}[data-theme="light"] .btn.ghost{color:#53675b;border-color:#d2ded6}[data-theme="light"] .status{color:#176b4b;background:#e8f6ee;border-color:#c7e6d3}[data-theme="light"] .field label{color:#344d3e}[data-theme="light"] .field input,[data-theme="light"] .field textarea,[data-theme="light"] .field select{background:#fbfdfb;color:#17271e;border-color:#cad9cf}[data-theme="light"] .drop{background:#f1faf5;border-color:#9acdb0}[data-theme="light"] .file,[data-theme="light"] .casecard,[data-theme="light"] .quick button{background:#f7faf8;color:#1b3024;border-color:#dce7e0}[data-theme="light"] .file .ficon,[data-theme="light"] .stat-icon{background:#e7f3eb}[data-theme="light"] .check{color:#344b3d}[data-theme="light"] .notice{background:#fff8e8;border-color:#ead6a4;color:#72571b}[data-theme="light"] .info{background:#edf8f1;border-color:#c4e2ce;color:#315c40}[data-theme="light"] .auth-gate{background:radial-gradient(ellipse at 17% 15%,#d9f1e5 0,transparent 38%),radial-gradient(ellipse at 85% 90%,#e8e4f4 0,transparent 35%),var(--bg)}[data-theme="light"] .auth-story h1{color:#17271f}[data-theme="light"] .auth-story h1 em{color:#087e5b}[data-theme="light"] .auth-lead,[data-theme="light"] .auth-feature-list small,[data-theme="light"] .auth-privacy small{color:#5e7467}[data-theme="light"] .auth-feature-list b,[data-theme="light"] .auth-privacy b{color:#243c2e}[data-theme="light"] .auth-feature-list>div>span{background:#e8f6ee;border-color:#c9e5d3;color:#087e5b}[data-theme="light"] .auth-panel{background:#fff;border-color:#d8e5dc;box-shadow:0 28px 70px #163b2918}[data-theme="light"] .auth-panel-head p,[data-theme="light"] .auth-panel .field label{color:#5b7064}[data-theme="light"] .auth-tabs{background:#f1f6f2;border-color:#dce7df}[data-theme="light"] .auth-tab{color:#607267}[data-theme="light"] .auth-tab.active{background:#dff2e7;color:#075b40}[data-theme="light"] .auth-panel .field input{background:#fbfdfb;border-color:#d0ded5;color:#1a2c21}[data-theme="light"] .auth-demo{background:#f1f6f2!important;color:#20372a!important;border-color:#d6e2d9!important}[data-theme="light"] .auth-demo-note{background:#fff8e8;border-color:#ead6a4;color:#72571b}[data-theme="light"] .auth-footer{border-color:#d8e3dd;color:#708177}[data-theme="light"] .auth-privacy{border-color:#d8e3dd}
+@media(max-width:800px){.auth-layout{grid-template-columns:1fr;max-width:560px;gap:28px}.auth-story{max-width:none}.auth-story h1{font-size:48px}.auth-feature-list{grid-template-columns:1fr 1fr;gap:12px}.auth-privacy{margin-top:20px}.auth-gate{padding:18px}.auth-theme-row{margin-bottom:8px}}
+@media(max-width:520px){.auth-feature-list{grid-template-columns:1fr}.auth-story h1{font-size:42px;letter-spacing:-2px}.auth-panel{padding:21px}.auth-footer span:nth-child(2){display:none}.auth-theme-row .theme-select-wrap span{display:none}.top-actions .theme-select-wrap span{display:none}.top-actions .theme-select{max-width:92px}.top-actions{gap:5px}.top-actions .status{display:none}}
+
+
+/* Ambient atmosphere: CSS-only, no tracking, no external assets. */
+:root{--ambient-a:rgba(69,220,169,.20);--ambient-b:rgba(107,110,248,.15)}
+[data-theme="midnight"]{--ambient-a:rgba(91,149,255,.21);--ambient-b:rgba(171,119,255,.16)}
+[data-theme="ocean"]{--ambient-a:rgba(56,213,225,.22);--ambient-b:rgba(53,121,216,.16)}
+[data-theme="violet"]{--ambient-a:rgba(205,126,255,.20);--ambient-b:rgba(125,101,252,.18)}
+[data-theme="light"]{--ambient-a:rgba(28,165,114,.14);--ambient-b:rgba(133,114,220,.10)}
+.ambient-scene{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0;isolation:isolate}
+.ambient-scene .ambient-grid{position:absolute;inset:-20%;background-image:linear-gradient(to right,var(--mint) 1px,transparent 1px),linear-gradient(to bottom,var(--mint) 1px,transparent 1px);background-size:74px 74px;opacity:.045;mask-image:linear-gradient(120deg,transparent 6%,black 50%,transparent 92%);animation:saak-grid 48s linear infinite}
+.ambient-orb{position:absolute;width:min(56vw,760px);aspect-ratio:1;border-radius:50%;filter:blur(65px);opacity:.68;will-change:transform}
+.ambient-orb.one{top:-34%;left:-18%;background:radial-gradient(circle,var(--ambient-a),transparent 68%);animation:saak-orbit-a 26s ease-in-out infinite alternate}
+.ambient-orb.two{bottom:-45%;right:-19%;background:radial-gradient(circle,var(--ambient-b),transparent 70%);animation:saak-orbit-b 32s ease-in-out infinite alternate}
+.ambient-orb.three{top:26%;right:18%;width:min(34vw,450px);background:radial-gradient(circle,var(--ambient-a),transparent 72%);opacity:.26;animation:saak-orbit-c 39s ease-in-out infinite alternate}
+.ambient-trace{position:absolute;left:-20%;top:62%;width:145%;height:1px;background:linear-gradient(90deg,transparent,var(--mint),transparent);opacity:.11;transform:rotate(-16deg);animation:saak-trace 18s ease-in-out infinite alternate}
+@keyframes saak-grid{to{transform:translate3d(74px,74px,0)}}
+@keyframes saak-orbit-a{to{transform:translate3d(25vw,20vh,0) scale(1.14)}}
+@keyframes saak-orbit-b{to{transform:translate3d(-25vw,-19vh,0) scale(.85)}}
+@keyframes saak-orbit-c{to{transform:translate3d(-12vw,22vh,0) scale(1.23)}}
+@keyframes saak-trace{to{transform:translateY(-23vh) rotate(-16deg);opacity:.05}}
+.auth-gate,.app{position:relative;z-index:1}.auth-gate{background:transparent!important}.auth-panel{position:relative;box-shadow:0 30px 90px #0005,0 0 0 1px #ffffff08;transition:transform .25s ease,box-shadow .25s ease}
+.card{transition:border-color .25s ease,box-shadow .25s ease,transform .25s ease;backdrop-filter:blur(9px)}
+@media(hover:hover){.card:not(.hero):hover{border-color:color-mix(in srgb,var(--mint) 28%,var(--line));box-shadow:0 20px 54px #0003;transform:translateY(-2px)}.quick button:hover{transform:translateY(-2px);border-color:var(--mint)}.btn:hover:not(:disabled){filter:brightness(1.07);transform:translateY(-1px)}}
+.btn,.quick button,.nav button{transition:transform .18s ease,background .2s ease,border-color .2s ease,filter .2s ease}
+.heading h1,.hero h2{letter-spacing:-.8px}.main{position:relative}.main:before{content:'';position:absolute;top:85px;left:5%;right:5%;height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent);pointer-events:none}
+.motion-toggle{display:inline-flex;align-items:center;gap:6px;white-space:nowrap;padding:7px 10px;border:1px solid var(--line);border-radius:9px;background:var(--surface2);color:var(--muted);font-size:11px;font-weight:700}
+.motion-toggle[aria-pressed="false"]{opacity:.78}
+body.motion-off .ambient-scene *{animation:none!important}body.motion-off .ambient-orb{opacity:.25}body.motion-off .card,body.motion-off .btn,body.motion-off .quick button{transition:none!important;transform:none!important}
+@media(prefers-reduced-motion:reduce){.ambient-scene *{animation:none!important}.ambient-orb{opacity:.24}.card,.btn,.quick button{transition:none!important;transform:none!important}html{scroll-behavior:auto}}
+@media(max-width:740px){.motion-toggle{font-size:0;gap:0;padding:7px}.motion-toggle:before{content:'◌';font-size:16px}.ambient-orb{filter:blur(48px)}.main:before{display:none}}
+@media print{.ambient-scene{display:none!important}}
+
 </style>
 </head>
 <body>
-<div class="app">
-<aside class="sidebar no-print"><div class="brand"><div class="logo">S</div><div><b>Saakshya</b><small>Private evidence workspace</small></div></div>
+<div class="ambient-scene" aria-hidden="true"><div class="ambient-grid"></div><div class="ambient-orb one"></div><div class="ambient-orb two"></div><div class="ambient-orb three"></div><div class="ambient-trace"></div></div>
+<section id="authGate" class="auth-gate" aria-label="Saakshya sign in">
+  <div class="auth-theme-row"><span class="auth-brand-mini"><span class="mini-mark"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 4 40 10v12c0 10-6 18-16 22C14 40 8 32 8 22V10L24 4Z" fill="none" stroke="currentColor" stroke-width="3"/><path d="m16 24 5 5 11-11" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Saakshya</span>
+  <button type="button" class="motion-toggle" data-motion-toggle aria-pressed="true" title="Pause or resume background motion">Motion on</button><label class="theme-select-wrap"><span>Appearance</span><select id="authThemeSelect" class="theme-select"><option value="forest">Forest</option><option value="midnight">Midnight</option><option value="ocean">Ocean</option><option value="violet">Violet</option><option value="light">Light</option></select></label></div>
+  <div class="auth-layout">
+    <div class="auth-story">
+      <div class="auth-kicker"><span class="pulse-dot"></span> PRIVATE DIGITAL EVIDENCE WORKSPACE</div>
+      <div class="auth-logo-large"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 3.8 40 9.7v12.1c0 10.4-6.4 18.1-16 22.4C14.4 39.9 8 32.2 8 21.8V9.7L24 3.8Z" fill="none" stroke="currentColor" stroke-width="2.6"/><path d="M16.5 24.5 21.5 29.2 32 18.8" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <h1>Clarity when<br><em>it matters most.</em></h1>
+      <p class="auth-lead">A calm, structured workspace to organise digital evidence, review incident details and prepare clear documentation.</p>
+      <div class="auth-feature-list"><div><span>01</span><div><b>Preserve with care</b><small>Create file fingerprints and session records.</small></div></div><div><span>02</span><div><b>Understand the sequence</b><small>Organise details into a reviewable timeline.</small></div></div><div><span>03</span><div><b>Prepare your next step</b><small>Build drafts that you can verify before use.</small></div></div></div>
+      <div class="auth-privacy"><span>◇</span><span><b>Privacy-led by design</b><small>This starter is a prototype. Do not enter real victim data.</small></span></div>
+    </div>
+    <div class="auth-panel">
+      <div class="auth-panel-head"><div><div class="eyebrow">WELCOME TO SAAKSHYA</div><h2 id="authTitle">Sign in to your workspace</h2><p id="authSubtitle">Continue to your private evidence workspace.</p></div><span class="auth-secure-mark">✦</span></div>
+      <div class="auth-tabs"><button type="button" class="auth-tab active" id="showLogin">Sign in</button><button type="button" class="auth-tab" id="showSignup">Create account</button></div>
+      <form id="authForm" autocomplete="off">
+        <div class="field auth-name-field hidden" id="authNameField"><label for="authName">Full name</label><input id="authName" type="text" placeholder="Your full name" autocomplete="off"></div>
+        <div class="field"><label for="authEmail">Email address</label><input id="authEmail" type="email" placeholder="you@example.com" autocomplete="off"></div>
+        <div class="field"><div class="auth-label-row"><label for="authPassword">Password</label><button type="button" class="text-button" id="togglePassword">Show</button></div><input id="authPassword" type="password" placeholder="Enter your password" autocomplete="new-password"></div>
+        <div class="field auth-confirm-field hidden" id="authConfirmField"><label for="authConfirm">Confirm password</label><input id="authConfirm" type="password" placeholder="Re-enter password" autocomplete="new-password"></div>
+        <button class="btn auth-submit" type="submit" id="authSubmit">Sign in</button>
+      </form>
+      <div class="auth-or"><span></span>OR<span></span></div>
+      <button type="button" class="btn secondary auth-demo" id="enterDemo">Explore demo workspace <span>→</span></button>
+      <div class="auth-demo-note"><b>Prototype notice</b><br>Authentication is not connected yet. Sign in and account creation are visual previews only; no account or password is saved. Use the demo button to explore the workspace.</div>
+      <p class="auth-terms">By continuing, you acknowledge this is an experimental prototype, not a secure evidence-storage service or emergency response channel.</p>
+    </div>
+  </div>
+  <footer class="auth-footer"><span>© 2026 Saakshya</span><span>Built for careful documentation · Prototype v0.3</span><span>Privacy first</span></footer>
+</section>
+
+<div class="app" id="workspaceApp">
+<aside class="sidebar no-print"><div class="brand"><div class="logo" aria-label="Saakshya logo"><svg viewBox="0 0 48 48" role="img" aria-hidden="true"><path d="M24 3.8 40 9.7v12.1c0 10.4-6.4 18.1-16 22.4C14.4 39.9 8 32.2 8 21.8V9.7L24 3.8Z" fill="none" stroke="currentColor" stroke-width="2.6"/><path d="M16.5 24.5 21.5 29.2 32 18.8" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M24 9.5v5" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".65"/></svg></div><div><b>Saakshya</b><small>Private evidence workspace</small></div></div>
 <div class="nav-label">Workspace</div><nav class="nav" id="nav">
 <button class="active" data-page="dashboard" title="Dashboard"><span class="ico">⌂</span>Dashboard</button>
 <button data-page="evidence" title="Evidence vault"><span class="ico">▣</span>Evidence Vault</button>
@@ -27,7 +123,7 @@
 <button data-page="settings" title="Privacy settings"><span class="ico">⚙</span>Privacy & Settings</button>
 </nav><div class="side-bottom"><div class="privacy-mini"><b>🛡 Local-first prototype</b>Files are processed in this browser. No server upload or cloud backup is configured.</div></div></aside>
 <main class="main">
-<div class="topbar no-print"><div class="crumb">Workspace / <span id="crumb">Dashboard</span></div><div class="top-actions"><span class="status">● Local session</span><button class="btn secondary small" id="quickExit">Quick exit ↗</button></div></div>
+<div class="topbar no-print"><div class="crumb">Workspace / <span id="crumb">Dashboard</span></div><div class="top-actions"><span class="status" id="sessionStatus">● Local demo session</span><button type="button" class="motion-toggle" data-motion-toggle aria-pressed="true" title="Pause or resume background motion">Motion on</button><label class="theme-select-wrap" aria-label="Choose colour theme"><span>Theme</span><select id="themeSelect" class="theme-select"><option value="forest">Forest</option><option value="midnight">Midnight</option><option value="ocean">Ocean</option><option value="violet">Violet</option><option value="light">Light</option></select></label><button class="btn ghost small" id="signOutDemo">Exit demo</button><button class="btn secondary small" id="quickExit">Quick exit ↗</button></div></div>
 
 <section class="page active" id="dashboard">
 <div class="card hero"><div><div class="eyebrow">A safer way to organise digital evidence</div><h2>Your evidence.<br>Clear, organised, in your control.</h2><p>Preserve original files, build a timeline, prepare a complaint draft and verify file fingerprints — without sending your evidence to a server in this demo.</p><div class="actions"><button class="btn" data-go="evidence">＋ Add evidence</button><button class="btn secondary" data-go="complaint">Prepare complaint</button></div></div><div class="hero-mark">🛡️</div></div>
@@ -43,9 +139,9 @@
 </section>
 
 <section class="page" id="analyzer">
-<div class="heading"><div><div class="eyebrow">AI-assisted · Human-reviewed</div><h1>Case Analyzer</h1><p>Organise your account, extract visible details from text and build a timeline. This demo sends pasted text to the configured AI backend for organisation; it does not make legal or factual determinations.</p></div><span class="pill">Review every result</span></div>
+<div class="heading"><div><div class="eyebrow">AI-assisted · Human-reviewed</div><h1>Case Analyzer</h1><p>Organise your account, extract visible details from text and build a timeline. This demo uses local keyword rules and optional AI assistance from the Saakshya backend; it does not make legal or factual determinations.</p></div><span class="pill">Review every result</span></div>
 <div class="grid cols2"><div class="card"><h2>Incident information</h2><div class="field"><label>Describe what happened</label><textarea id="incident" placeholder="Describe events in your own words, including dates, what was said or demanded, and what you did next."></textarea></div><div class="row"><div class="field"><label>Concern category</label><select id="category"><option>Not yet classified</option><option>Sextortion / blackmail</option><option>Non-consensual intimate imagery</option><option>Impersonation / fake profile</option><option>Stalking / harassment</option><option>Threats / abusive messages</option><option>Financial cyber fraud</option><option>Other / unsure</option></select></div><div class="field"><label>Incident date</label><input id="incidentDate" type="date"></div></div><div class="field"><label>Account / profile URL</label><input id="profile" placeholder="https://..."></div><div class="field"><label>Paste chat export / message text for local keyword extraction</label><textarea id="chatText" placeholder="Paste text only if safe. It stays in this page session."></textarea></div><div class="actions"><button class="btn" id="analyzeBtn">Analyse pasted text</button><button class="btn secondary" id="saveCase">Save case details</button></div></div>
-<div class="card"><h2>Review extracted details</h2><p class="muted tiny">Keyword matches are prompts for your review, not proof of a crime or verified facts.</p><div id="analysisResults"><div class="empty">Add a description or paste message text, then select Analyse.</div></div><div class="notice">Results are generated by the configured AI backend and are unverified. Do not interpret them as a risk score, diagnosis, or legal classification.</div></div></div>
+<div class="card"><h2>Review extracted details</h2><p class="muted tiny">Keyword matches are prompts for your review, not proof of a crime or verified facts.</p><div id="analysisResults"><div class="empty">Add a description or paste message text, then select Analyse.</div></div><div class="notice">AI-assisted review is optional: when the local Saakshya backend is running, Analyse also requests suggestions from it; otherwise only local keyword rules are used. AI suggestions are unverified and are not a risk score, diagnosis, or legal classification. No evidence files are uploaded.</div></div></div>
 <div class="card" style="margin-top:16px"><div class="section-head"><h2>Case timeline</h2><span class="pill">User-entered events</span></div><div class="row"><div class="field"><label>Event date and time</label><input type="datetime-local" id="eventDate"></div><div class="field"><label>Event description</label><input id="eventText" placeholder="e.g. Received a payment demand"></div></div><button class="btn secondary small" id="addEvent">＋ Add timeline event</button><div id="timelineList" class="timeline"><p class="muted tiny">No events added yet.</p></div></div>
 </section>
 
@@ -81,7 +177,7 @@
 <section class="page" id="settings">
 <div class="heading"><div><div class="eyebrow">Control your session</div><h1>Privacy & Settings</h1><p>Prototype controls for this browser session. A real deployment needs audited security engineering before handling sensitive material.</p></div><span class="pill">Local session only</span></div>
 <div class="grid cols2"><div class="card"><h2>Safety appearance</h2><p class="muted tiny">Quick exit switches to a neutral notes screen. It does not erase browser history, downloads, memory, or network traces.</p><div class="actions"><button class="btn secondary" id="safeMode">Open neutral screen</button><button class="btn ghost" id="blurToggle">Toggle sensitive preview blur</button></div><div class="notice">A decoy PIN and hidden vault can create a false sense of security. They are not implemented here. Do not rely on this demo to protect you from someone with device access.</div></div><div class="card dangerzone"><h2>Delete session data</h2><p class="muted tiny">Evidence records, case details, timeline entries and tracker entries are held in page memory only. Reloading or closing the page clears them.</p><button class="btn danger" id="deleteAll">Clear all session data</button></div></div>
-<div class="card" style="margin-top:16px"><h2>Security limitations</h2><ul class="muted tiny"><li>No authentication, PIN lock, server, database or encrypted persistent vault.</li><li>No external trusted timestamp, certificate signing or public QR verification.</li><li>No live AI provider, OCR engine, language translation or automated legal analysis.</li><li>No portal, police, platform or case-status integration.</li><li>Do not upload real intimate imagery or sensitive victim data to this prototype.</li></ul></div>
+<div class="card" style="margin-top:16px"><h2>Security limitations</h2><ul class="muted tiny"><li>No authentication, PIN lock, server, database or encrypted persistent vault.</li><li>No external trusted timestamp, certificate signing or public QR verification.</li><li>AI analysis is optional via the local Saakshya backend; no OCR engine, language translation or automated legal analysis is included.</li><li>No portal, police, platform or case-status integration.</li><li>Do not upload real intimate imagery or sensitive victim data to this prototype.</li></ul></div>
 </section>
 <div class="footer">Saakshya 2.0 prototype · Not an emergency service, legal representative, police portal or certified evidence platform.</div>
 </main></div>
@@ -127,13 +223,99 @@ $("quickExit").addEventListener("click",()=>{$("neutral").classList.add("show")}
 $("blurToggle").addEventListener("click",()=>{document.body.classList.toggle("blur-sensitive");let style=$("blurStyle");if(!style){style=document.createElement("style");style.id="blurStyle";document.head.appendChild(style)}style.textContent=document.body.classList.contains("blur-sensitive")?".hash,.file b,#reportPreview{filter:blur(5px)}":"";toast("Sensitive preview blur toggled")});
 renderFiles();renderTimeline();renderTracker();renderReport();renderActivity();renderDashboard();
 </script>
-<section style="padding:20px"><h2>AI backend test</h2><textarea id="apiTestText" placeholder="Synthetic test text"></textarea><button id="apiTestBtn">Analyse with backend</button><pre id="apiTestOutput"></pre></section><script>document.getElementById('apiTestBtn').onclick=async()=>{const o=document.getElementById('apiTestOutput');try{const r=await fetch(((location.hostname==='127.0.0.1'||location.hostname==='localhost')?'http://127.0.0.1:8000':'')+'/api/analyze',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({evidence_text:document.getElementById('apiTestText').value,language:'English'})});o.textContent=JSON.stringify(await r.json(),null,2)}catch(e){o.textContent=e.message}}</script><script>
+
+<script>
 (() => {
+  const root = document.documentElement;
+  const authGate = document.getElementById('authGate');
+  const app = document.getElementById('workspaceApp');
+  const themeIds = ['themeSelect','authThemeSelect'];
+  const allowedThemes = ['forest','midnight','ocean','violet','light'];
+  let authMode = 'login';
+  const setTheme = (theme) => {
+    if (!allowedThemes.includes(theme)) theme = 'forest';
+    root.dataset.theme = theme;
+    themeIds.forEach(id => { const el = document.getElementById(id); if (el) el.value = theme; });
+    try { localStorage.setItem('saakshya-theme', theme); } catch (_) {}
+  };
+  try { setTheme(localStorage.getItem('saakshya-theme') || 'forest'); } catch (_) { setTheme('forest'); }
+  themeIds.forEach(id => document.getElementById(id)?.addEventListener('change', e => setTheme(e.target.value)));
+
+  const title = document.getElementById('authTitle');
+  const subtitle = document.getElementById('authSubtitle');
+  const submit = document.getElementById('authSubmit');
+  const nameField = document.getElementById('authNameField');
+  const confirmField = document.getElementById('authConfirmField');
+  const loginTab = document.getElementById('showLogin');
+  const signupTab = document.getElementById('showSignup');
+  const setMode = mode => {
+    authMode = mode;
+    const signup = mode === 'signup';
+    title.textContent = signup ? 'Create your workspace' : 'Sign in to your workspace';
+    subtitle.textContent = signup ? 'Set up your Saakshya profile preview.' : 'Continue to your private evidence workspace.';
+    submit.textContent = signup ? 'Create account' : 'Sign in';
+    nameField.classList.toggle('hidden', !signup);
+    confirmField.classList.toggle('hidden', !signup);
+    loginTab.classList.toggle('active', !signup);
+    signupTab.classList.toggle('active', signup);
+    document.getElementById('authPassword').autocomplete = 'new-password';
+  };
+  loginTab.addEventListener('click', () => setMode('login'));
+  signupTab.addEventListener('click', () => setMode('signup'));
+  document.getElementById('togglePassword').addEventListener('click', e => {
+    const input = document.getElementById('authPassword');
+    input.type = input.type === 'password' ? 'text' : 'password';
+    e.currentTarget.textContent = input.type === 'password' ? 'Show' : 'Hide';
+  });
+  document.getElementById('authForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const email = document.getElementById('authEmail').value.trim();
+    const password = document.getElementById('authPassword').value;
+    if (!email || !password) { alert('Enter an email address and password to preview this form.'); return; }
+    if (authMode === 'signup') {
+      const name = document.getElementById('authName').value.trim();
+      const confirm = document.getElementById('authConfirm').value;
+      if (!name) { alert('Enter your name.'); return; }
+      if (password.length < 8) { alert('For the UI preview, use at least 8 characters. Do not use a real password.'); return; }
+      if (password !== confirm) { alert('The passwords do not match.'); return; }
+    }
+    alert('Authentication is not connected. No account was created and no credentials were saved. Use “Explore demo workspace” to preview Saakshya.');
+    document.getElementById('authPassword').value = '';
+    document.getElementById('authConfirm').value = '';
+  });
+  const enterDemo = () => {
+    authGate.style.display = 'none';
+    app.classList.add('ready');
+    document.getElementById('sessionStatus').textContent = '● Local demo session';
+    window.scrollTo(0,0);
+  };
+  document.getElementById('enterDemo').addEventListener('click', enterDemo);
+  document.getElementById('signOutDemo').addEventListener('click', () => {
+    if (!confirm('Exit the local demo workspace? Unsaved in-memory case data will be lost when you reload the page.')) return;
+    app.classList.remove('ready');
+    authGate.style.display = 'flex';
+    setMode('login');
+    window.scrollTo(0,0);
+  });
+  setMode('login');
+})();
+</script>
+
+<script>
+(function(){
+  const key='saakshya-motion-v1';
+  let enabled=true;
+  try {const v=localStorage.getItem(key);enabled=v===null?!window.matchMedia('(prefers-reduced-motion: reduce)').matches:v==='on';}catch(e){enabled=!window.matchMedia('(prefers-reduced-motion: reduce)').matches;}
+  function render(){document.body.classList.toggle('motion-off',!enabled);document.querySelectorAll('[data-motion-toggle]').forEach(b=>{b.setAttribute('aria-pressed',String(enabled));b.textContent=enabled?'Motion on':'Motion off';});}
+  document.querySelectorAll('[data-motion-toggle]').forEach(b=>b.addEventListener('click',()=>{enabled=!enabled;try{localStorage.setItem(key,enabled?'on':'off')}catch(e){}render();}));
+  render();
+})();
+</script>
+<script>
+(() => {
+  "use strict";
   const analyzeBtn = document.getElementById("analyzeBtn");
   if (!analyzeBtn) return;
-
-  const freshBtn = analyzeBtn.cloneNode(true);
-  analyzeBtn.replaceWith(freshBtn);
 
   const apiBase = (location.hostname === "127.0.0.1" || location.hostname === "localhost") && location.port === "5500"
     ? "http://127.0.0.1:8000"
@@ -160,11 +342,11 @@ renderFiles();renderTimeline();renderTracker();renderReport();renderActivity();r
     ? '<div class="tiny muted">“' + escHtml(quote) + '”</div>'
     : "";
 
-  const renderAnalysis = analysis => {
-    const list = (items, render) => Array.isArray(items) && items.length
-      ? items.map(render).join("")
-      : '<p class="muted tiny">None found.</p>';
+  const list = (items, render) => Array.isArray(items) && items.length
+    ? items.map(render).join("")
+    : '<p class="muted tiny">None found.</p>';
 
+  const renderAnalysis = analysis => {
     const entities = list(analysis.entities, item =>
       '<div class="metric"><span>' + escHtml(item.type) + ": " + escHtml(item.value) +
       '</span><b class="' + (item.source_verified_in_input ? "green" : "red") + '">' +
@@ -190,8 +372,8 @@ renderFiles();renderTimeline();renderTracker();renderReport();renderActivity();r
       '<div class="tiny muted">• ' + escHtml(item) + "</div>"
     );
 
-    document.getElementById("analysisResults").innerHTML =
-      '<div class="metric"><span>Category</span><b>' + escHtml(analysis.category || "Not classified") + "</b></div>" +
+    return '<div class="metric"><span>Category</span><b>' +
+      escHtml(analysis.category || "Not classified") + "</b></div>" +
       "<p>" + escHtml(analysis.summary || "No summary returned.") + "</p>" +
       "<h3>Entities</h3>" + entities +
       "<h3>Potential threats</h3>" + threats +
@@ -201,24 +383,30 @@ renderFiles();renderTimeline();renderTracker();renderReport();renderActivity();r
       '<div class="notice">AI suggestions are unverified and are not legal advice. Review every quote and detail before relying on it.</div>';
   };
 
-  freshBtn.addEventListener("click", async () => {
-    const text = (
-      document.getElementById("incident").value + "\n" +
-      document.getElementById("chatText").value
-    ).trim();
+  const sectionId = "aiAnalysisSection";
+  let requestId = 0;
 
-    if (!text) {
-      showToast("Add a description or paste text first");
-      return;
-    }
-    if (text.length < 10) {
-      showToast("Add at least 10 characters for analysis");
-      return;
-    }
+  analyzeBtn.addEventListener("click", async () => {
+    const text = (
+      (document.getElementById("incident")?.value || "") + "\n" +
+      (document.getElementById("chatText")?.value || "")
+    ).trim();
+    if (!text) return;
 
     const output = document.getElementById("analysisResults");
-    output.innerHTML = '<div class="empty">Analysing with the AI backend…</div>';
-    freshBtn.disabled = true;
+    if (!output) return;
+    document.getElementById(sectionId)?.remove();
+
+    if (text.length < 10) {
+      output.insertAdjacentHTML("beforeend",
+        '<div id="' + sectionId + '" class="notice">AI analysis needs at least 10 characters. Local keyword results above still apply.</div>');
+      return;
+    }
+
+    const currentRequest = ++requestId;
+    output.insertAdjacentHTML("beforeend",
+      '<div id="' + sectionId + '" style="margin-top:16px"><h3>AI-assisted review <span class="pill">Unverified</span></h3>' +
+      '<div class="empty">Requesting AI analysis from the Saakshya backend…</div></div>');
 
     try {
       const response = await fetch(apiBase + "/api/analyze", {
@@ -230,13 +418,19 @@ renderFiles();renderTimeline();renderTracker();renderReport();renderActivity();r
       if (!response.ok) {
         throw new Error(payload.detail || "Request failed (" + response.status + ")");
       }
-      renderAnalysis(payload.analysis || {});
+      if (currentRequest !== requestId) return;
+      document.getElementById(sectionId).innerHTML =
+        '<h3>AI-assisted review <span class="pill">Unverified</span></h3>' +
+        renderAnalysis(payload.analysis || {});
       showToast("AI analysis complete — review every result");
     } catch (error) {
-      output.innerHTML = '<div class="notice">' + escHtml(error.message || "Could not reach the AI backend.") + "</div>";
-      showToast("AI analysis failed");
-    } finally {
-      freshBtn.disabled = false;
+      if (currentRequest !== requestId) return;
+      const section = document.getElementById(sectionId);
+      if (section) section.innerHTML =
+        '<h3>AI-assisted review <span class="pill">Unverified</span></h3>' +
+        '<div class="notice">' + escHtml(error.message || "Could not reach the AI backend.") +
+        " Local keyword results above are still available.</div>";
+      showToast("AI analysis unavailable — showing local results");
     }
   });
 })();
